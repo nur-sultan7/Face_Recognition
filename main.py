@@ -127,9 +127,7 @@ def show_frame():
     #     return
 show_frame()
 win.mainloop()
-# while True:
 
-#     label.after(10, show_frame)
 
 # Release handle to the webcam
 # video_capture.release()
