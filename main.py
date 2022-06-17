@@ -12,15 +12,6 @@ import asyncio
 
 
 
-#Подключение к БД
-# client = MongoClient('localhost', 27017)
-# db = client['face_db']
-
-# faces = db.face
-
-
-
-
 name=[]
 encodings=[]
 dao = DAO()
@@ -42,9 +33,14 @@ video_capture = cv2.VideoCapture(0)
 win =Tk()
 win.geometry("800x600")
 label=Label(win)
-my_string_var = StringVar()
-my_string_var.set("What should I learn")
-name_label = Label(win, textvariable = my_string_var)
+
+#Строка (StringVar) c именем студента
+stud_name_var = StringVar()
+stud_name_var.set("Студент не обнаружен...")
+#Label для отображения имени студента. Label реагирует на изменения в StringVar
+#который ему передается в качестве параметра. То есть изменения StringVar(с именем студента) изменяет и Label
+name_label = Label(win, textvariable = stud_name_var)
+
 label.grid(row=0,column=0)
 name_label.grid(row=1, column=0)
 
@@ -111,7 +107,8 @@ def show_frame():
         cv2.rectangle(frame, (left -150, bottom +35), (right +110, bottom), (0, 0, 0), cv2.FILLED)
         # Подпись
         cv2.putText(frame, name,  (left - 120, bottom +20 ), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
-        my_string_var.set(name)
+        #В StringVar меняется имя на новое (обнаруженное) 
+        stud_name_var.set(name)
        
 
     # # Display the resulting image
