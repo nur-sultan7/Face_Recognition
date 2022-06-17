@@ -107,8 +107,8 @@ def show_frame():
         cv2.rectangle(frame, (left -150, bottom +35), (right +110, bottom), (0, 0, 0), cv2.FILLED)
         # Подпись
         cv2.putText(frame, name,  (left - 120, bottom +20 ), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
-        #В StringVar меняется на новое имя(обнаруженное) 
         
+        #В StringVar меняется на новое имя(обнаруженное) 
         stud_name_var.set(name)
        
 
